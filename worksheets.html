@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Worksheet Generator for Kids | Alphabet, Number & Math Worksheets</title>
+<meta name="description" content="Instantly generate free printable worksheets for kids — alphabet tracing, number tracing, and math addition practice. Pick your options and download a print-ready PDF.">
+<link rel="canonical" href="https://kidscertificates.example.com/worksheets.html">
+<meta name="robots" content="index, follow">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Is the worksheet generator free?","acceptedAnswer":{"@type":"Answer","text":"Yes, generating and downloading worksheets is free. Premium removes the watermark and unlocks extra problem counts."}},
+    {"@type":"Question","name":"What kinds of worksheets can I make?","acceptedAnswer":{"@type":"Answer","text":"Alphabet tracing, number tracing, and math addition practice sheets, with more types added over time."}},
+    {"@type":"Question","name":"Can I print the worksheet directly?","acceptedAnswer":{"@type":"Answer","text":"Yes, use the Print button, or download it as an image to print later."}}
+  ]
+}
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  body { font-family: 'Georgia', serif; background:#fdf9f0; color:#2d2d2d; }
+  @media print {
+    body * { visibility: hidden; }
+    #worksheetSheet, #worksheetSheet * { visibility: visible; }
+    #worksheetSheet { position: fixed; top:0; left:0; width:100%; }
+  }
+  .trace-letter { font-family: 'Georgia', serif; letter-spacing: 2px; -webkit-text-stroke: 1px #cbd5e1; color: transparent; }
+  .tab-btn.active { background:#d97706; color:white; }
+</style>
+</head>
+<body>
+<header class="max-w-6xl mx-auto px-6 py-6 flex justify-between items-center border-b border-amber-100">
+  <a href="/index.html" class="text-xl font-bold text-amber-700 flex items-center gap-2">🏆 <span>KidCertificates</span></a>
+  <nav class="hidden md:flex gap-6 text-sm font-medium text-gray-600">
+    <a href="/worksheets.html" class="text-amber-700 font-semibold">Worksheets</a>
+    <a href="/blog.html" class="hover:text-amber-700">Blog</a>
+    <a href="/about.html" class="hover:text-amber-700">About</a>
+    <a href="/contact.html" class="hover:text-amber-700">Contact</a>
+  </nav>
+  <a href="/index.html#builder" class="bg-amber-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold shadow hover:bg-amber-700 transition">Make a Certificate</a>
+</header>
+
+<section class="max-w-4xl mx-auto px-6 py-14 text-center">
+  <span class="bg-amber-100 text-amber-800 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wide">Free & Instant</span>
+  <h1 class="text-3xl md:text-5xl font-extrabold mt-6 leading-tight">Free Printable Worksheet Generator for Kids</h1>
+  <p class="text-lg text-gray-600 mt-5 max-w-2xl mx-auto">Pick a worksheet type, choose your options, and download a print-ready practice sheet in seconds.</p>
+</section>
+
+<section class="max-w-5xl mx-auto px-6 pb-6">
+  <div class="flex justify-center gap-2 flex-wrap mb-8">
+    <button class="tab-btn active px-5 py-2 rounded-full border border-amber-300 text-sm font-semibold text-amber-700" data-type="alphabet" onclick="switchType('alphabet')">Alphabet Tracing</button>
+    <button class="tab-btn px-5 py-2 rounded-full border border-amber-300 text-sm font-semibold text-amber-700" data-type="numbers" onclick="switchType('numbers')">Number Tracing</button>
+    <button class="tab-btn px-5 py-2 rounded-full border border-amber-300 text-sm font-semibold text-amber-700" data-type="addition" onclick="switchType('addition')">Addition Practice</button>
+  </div>
+</section>
+
+<section class="max-w-5xl mx-auto px-6 pb-10 grid grid-cols-1 lg:grid-cols-2 gap-10">
+  <div class="bg-white rounded-2xl shadow-sm border border-amber-100 p-6">
+    <h2 class="text-xl font-bold mb-5" id="controlsTitle">Alphabet Tracing Options</h2>
+
+    <div id="ctrl-alphabet" class="space-y-4">
+      <div>
+        <label class="block text-sm font-semibold mb-1">From Letter</label>
+        <select id="letterFrom" class="w-full px-4 py-2.5 rounded-lg border border-gray-300" onchange="generate()"></select>
+      </div>
+      <div>
+        <label class="block text-sm font-semibold mb-1">To Letter</label>
+        <select id="letterTo" class="w-full px-4 py-2.5 rounded-lg border border-gray-300" onchange="generate()"></select>
+      </div>
+      <div>
+        <label class="block text-sm font-semibold mb-1">Case</label>
+        <select id="letterCase" class="w-full px-4 py-2.5 rounded-lg border border-gray-300" onchange="generate()">
+          <option value="upper">Uppercase (A, B, C)</option>
+          <option value="lower">Lowercase (a, b, c)</option>
+          <option value="both">Both</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="ctrl-numbers" class="space-y-4 hidden">
+      <div>
+        <label class="block text-sm font-semibold mb-1">From Number</label>
+        <input id="numFrom" type="number" value="1" min="0" max="98" class="w-full px-4 py-2.5 rounded-lg border border-gray-300" oninput="generate()">
+      </div>
+      <div>
+        <label class="block text-sm font-semibold mb-1">To Number</label>
+        <input id="numTo" type="number" value="10" min="1" max="100" class="w-full px-4 py-2.5 rounded-lg border border-gray-300" oninput="generate()">
+      </div>
+    </div>
+
+    <div id="ctrl-addition" class="space-y-4 hidden">
+      <div>
+        <label class="block text-sm font-semibold mb-1">Max Number</label>
+        <select id="addMax" class="w-full px-4 py-2.5 rounded-lg border border-gray-300" onchange="generate()">
+          <option value="5">Up to 5</option>
+          <option value="10" selected>Up to 10</option>
+          <option value="20">Up to 20</option>
+          <option value="50">Up to 50</option>
+        </select>
+      </div>
+      <div>
+        <label class="block text-sm font-semibold mb-1">Number of Problems</label>
+        <select id="addCount" class="w-full px-4 py-2.5 rounded-lg border border-gray-300" onchange="generate()">
+          <option value="6">6</option>
+          <option value="12" selected>12</option>
+          <option value="20">20 (Premium)</option>
+        </select>
+      </div>
+      <button onclick="generate()" class="text-sm font-semibold text-amber-600 hover:underline">🔄 Shuffle new problems</button>
+    </div>
+
+    <div class="mt-6">
+      <label class="block text-sm font-semibold mb-1">Worksheet Title</label>
+      <input id="sheetTitle" type="text" placeholder="e.g. Ayesha's Practice Sheet" class="w-full px-4 py-2.5 rounded-lg border border-gray-300" oninput="generate()">
+    </div>
+
+    <div class="flex gap-3 mt-6 flex-wrap">
+      <button onclick="downloadSheet()" class="bg-amber-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-amber-700 transition">⬇ Download as Image</button>
+      <button onclick="window.print()" class="bg-white border border-amber-300 text-amber-700 px-6 py-3 rounded-full font-semibold hover:bg-amber-50 transition">🖨 Print</button>
+    </div>
+    <p class="text-xs text-gray-400 mt-3">Free download includes a small watermark. <a href="/index.html" class="underline">Unlock Premium</a> to remove it and access 20-problem sheets.</p>
+  </div>
+
+  <div class="flex items-start justify-center">
+    <div id="worksheetSheet" class="w-full bg-white rounded-lg shadow-xl p-8 border-2 border-amber-200 min-h-[420px]">
+      <h2 id="previewTitle" class="text-xl font-bold text-center mb-1">Practice Sheet</h2>
+      <p class="text-center text-xs text-gray-400 mb-6" id="previewSubtitle">Alphabet Tracing</p>
+      <div id="sheetBody" class="space-y-4"></div>
+      <p class="text-[10px] text-gray-300 text-center mt-6" id="worksheetWatermark">Made with KidCertificates.com</p>
+    </div>
+  </div>
+</section>
+
+<section class="max-w-4xl mx-auto px-6 py-6 text-center">
+  <div class="border border-dashed border-gray-300 rounded-lg py-8 text-gray-400 text-sm">Ad space (connect Google AdSense here once approved)</div>
+</section>
+
+<section class="max-w-4xl mx-auto px-6 py-16">
+  <h2 class="text-2xl font-bold mb-6">Why Practice Worksheets Help Early Learners</h2>
+  <p class="text-gray-700 leading-relaxed mb-4">Repetition builds confidence. Tracing letters and numbers strengthens fine motor skills and letter recognition, while simple addition problems help children build number sense before moving on to harder math.</p>
+  <p class="text-gray-700 leading-relaxed">Generate a fresh worksheet anytime — perfect for daily practice, homeschooling, or classroom handouts.</p>
+
+  <h2 class="text-2xl font-bold mt-10 mb-6">Frequently Asked Questions</h2>
+  <div class="space-y-4">
+    <details class="p-4 bg-white rounded-xl border border-gray-100"><summary class="font-semibold cursor-pointer">Is the worksheet generator free?</summary><p class="text-sm text-gray-600 mt-2">Yes, generating and downloading worksheets is free, with a small watermark.</p></details>
+    <details class="p-4 bg-white rounded-xl border border-gray-100"><summary class="font-semibold cursor-pointer">What kinds of worksheets can I make?</summary><p class="text-sm text-gray-600 mt-2">Alphabet tracing, number tracing, and math addition practice, with more types planned.</p></details>
+    <details class="p-4 bg-white rounded-xl border border-gray-100"><summary class="font-semibold cursor-pointer">Can I print the worksheet directly?</summary><p class="text-sm text-gray-600 mt-2">Yes — use the Print button, or download it as an image first.</p></details>
+  </div>
+</section>
+
+<footer class="max-w-6xl mx-auto px-6 py-10 border-t border-gray-200 text-center text-sm text-gray-500">
+  <div class="flex justify-center gap-6 mb-4 flex-wrap">
+    <a href="/worksheets.html" class="hover:text-amber-700">Worksheets</a>
+    <a href="/blog.html" class="hover:text-amber-700">Blog</a>
+    <a href="/about.html" class="hover:text-amber-700">About</a>
+    <a href="/privacy.html" class="hover:text-amber-700">Privacy Policy</a>
+    <a href="/terms.html" class="hover:text-amber-700">Terms of Service</a>
+    <a href="/contact.html" class="hover:text-amber-700">Contact</a>
+  </div>
+  © 2026 KidCertificates. All rights reserved.
+</footer>
+
+<script>
+let currentType = 'alphabet';
+
+const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+const letterFrom = document.getElementById('letterFrom');
+const letterTo = document.getElementById('letterTo');
+letters.forEach(l => {
+  letterFrom.innerHTML += `<option value="${l}">${l}</option>`;
+  letterTo.innerHTML += `<option value="${l}">${l}</option>`;
+});
+letterTo.value = 'E';
+
+function switchType(type) {
+  currentType = type;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.type === type));
+  document.getElementById('ctrl-alphabet').classList.toggle('hidden', type !== 'alphabet');
+  document.getElementById('ctrl-numbers').classList.toggle('hidden', type !== 'numbers');
+  document.getElementById('ctrl-addition').classList.toggle('hidden', type !== 'addition');
+  const titles = { alphabet: 'Alphabet Tracing Options', numbers: 'Number Tracing Options', addition: 'Addition Practice Options' };
+  const subtitles = { alphabet: 'Alphabet Tracing', numbers: 'Number Tracing', addition: 'Addition Practice' };
+  document.getElementById('controlsTitle').textContent = titles[type];
+  document.getElementById('previewSubtitle').textContent = subtitles[type];
+  generate();
+}
+
+function generate() {
+  const title = document.getElementById('sheetTitle').value.trim() || 'Practice Sheet';
+  document.getElementById('previewTitle').textContent = title;
+  const body = document.getElementById('sheetBody');
+  body.innerHTML = '';
+
+  if (currentType === 'alphabet') {
+    const from = letters.indexOf(letterFrom.value);
+    const to = letters.indexOf(letterTo.value);
+    const caseType = document.getElementById('letterCase').value;
+    const [start, end] = from <= to ? [from, to] : [to, from];
+    for (let i = start; i <= end; i++) {
+      const upper = letters[i];
+      const lower = letters[i].toLowerCase();
+      const display = caseType === 'upper' ? upper : caseType === 'lower' ? lower : upper + lower;
+      const row = document.createElement('div');
+      row.className = 'border-b-2 border-dashed border-gray-300 pb-2 flex items-center gap-4';
+      row.innerHTML = `<span class="text-4xl trace-letter">${display.repeat(4)}</span>`;
+      body.appendChild(row);
+    }
+  }
+
+  if (currentType === 'numbers') {
+    const from = parseInt(document.getElementById('numFrom').value) || 0;
+    const to = parseInt(document.getElementById('numTo').value) || 10;
+    const [start, end] = from <= to ? [from, to] : [to, from];
+    for (let i = start; i <= end; i++) {
+      const row = document.createElement('div');
+      row.className = 'border-b-2 border-dashed border-gray-300 pb-2';
+      row.innerHTML = `<span class="text-4xl trace-letter">${String(i).repeat(5)}</span>`;
+      body.appendChild(row);
+    }
+  }
+
+  if (currentType === 'addition') {
+    const max = parseInt(document.getElementById('addMax').value);
+    const count = parseInt(document.getElementById('addCount').value);
+    const grid = document.createElement('div');
+    grid.className = 'grid grid-cols-3 gap-4';
+    for (let i = 0; i < count; i++) {
+      const a = Math.floor(Math.random() * max) + 1;
+      const b = Math.floor(Math.random() * max) + 1;
+      const cell = document.createElement('div');
+      cell.className = 'text-center border border-gray-200 rounded-lg py-4 text-lg font-semibold';
+      cell.innerHTML = `${a} + ${b} = ____`;
+      grid.appendChild(cell);
+    }
+    body.appendChild(grid);
+  }
+}
+
+function downloadSheet() {
+  html2canvas(document.getElementById('worksheetSheet'), { scale: 2 }).then(canvas => {
+    const link = document.createElement('a');
+    link.download = 'worksheet.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  });
+}
+
+generate();
+</script>
+</body>
+</html>
