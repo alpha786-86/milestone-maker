@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | KidCertificates</title>
+<meta name="description" content="Get in touch with the KidCertificates team for support, feedback, or partnership questions.">
+<link rel="canonical" href="https://kidscertificates.example.com/contact.html">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>body{font-family:'Georgia',serif;background:#fdf9f0;color:#2d2d2d;}</style>
+</head>
+<body>
+<header class="max-w-6xl mx-auto px-6 py-6 flex justify-between items-center border-b border-amber-100">
+  <a href="/index.html" class="text-xl font-bold text-amber-700 flex items-center gap-2">🏆 <span>KidCertificates</span></a>
+  <nav class="hidden md:flex gap-6 text-sm font-medium text-gray-600">
+    <a href="/worksheets.html" class="hover:text-amber-700">Worksheets</a>
+    <a href="/blog.html" class="hover:text-amber-700">Blog</a>
+    <a href="/about.html" class="hover:text-amber-700">About</a>
+    <a href="/contact.html" class="hover:text-amber-700">Contact</a>
+  </nav>
+  <a href="/index.html#builder" class="bg-amber-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold shadow hover:bg-amber-700 transition">Create Free Certificate</a>
+</header>
+
+<section class="max-w-2xl mx-auto px-6 py-16">
+  <h1 class="text-3xl font-extrabold mb-2 text-center">Contact Us</h1>
+  <p class="text-gray-600 text-center mb-8">Questions, feedback, or found a bug? Send us a message.</p>
+  <form id="contactForm" class="space-y-6 bg-white p-6 rounded-2xl border border-amber-100" onsubmit="handleSubmit(event)">
+    <div>
+      <label class="block text-sm font-semibold mb-2">Your Name</label>
+      <input type="text" id="cName" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-amber-500">
+    </div>
+    <div>
+      <label class="block text-sm font-semibold mb-2">Your Email</label>
+      <input type="email" id="cEmail" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-amber-500">
+    </div>
+    <div>
+      <label class="block text-sm font-semibold mb-2">Message</label>
+      <textarea id="cMessage" rows="4" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-amber-500"></textarea>
+    </div>
+    <button type="submit" class="w-full bg-amber-600 text-white py-3.5 rounded-xl font-bold shadow hover:bg-amber-700 transition">Send Message</button>
+    <p class="text-xs text-gray-400 text-center">This opens your email app with the message pre-filled.</p>
+  </form>
+</section>
+
+<footer class="max-w-6xl mx-auto px-6 py-10 border-t border-gray-200 text-center text-sm text-gray-500">
+  <div class="flex justify-center gap-6 mb-4 flex-wrap">
+    <a href="/worksheets.html" class="hover:text-amber-700">Worksheets</a>
+    <a href="/blog.html" class="hover:text-amber-700">Blog</a>
+    <a href="/about.html" class="hover:text-amber-700">About</a>
+    <a href="/privacy.html" class="hover:text-amber-700">Privacy Policy</a>
+    <a href="/terms.html" class="hover:text-amber-700">Terms of Service</a>
+    <a href="/contact.html" class="hover:text-amber-700">Contact</a>
+  </div>
+  © 2026 KidCertificates. All rights reserved.
+</footer>
+
+<script>
+const SUPPORT_EMAIL = "a4606963@gmail.com";
+function handleSubmit(e) {
+  e.preventDefault();
+  const name = document.getElementById('cName').value;
+  const email = document.getElementById('cEmail').value;
+  const msg = document.getElementById('cMessage').value;
+  const subject = encodeURIComponent('KidCertificates contact — ' + name);
+  const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${msg}`);
+  window.location.href = `mailto:${SUPPORT_EMAIL}?subject=${subject}&body=${body}`;
+}
+</script>
+</body>
+</html>
