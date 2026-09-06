@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Printable Certificate Maker for Kids | Preschool & Achievement Certificates</title>
+<meta name="description" content="Create a personalized, printable certificate for your child in seconds. Perfect for preschool graduation, learning milestones, good behavior, and more. Free to use.">
+<link rel="canonical" href="https://kidscertificates.example.com/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free Printable Certificate Maker for Kids">
+<meta property="og:description" content="Create a personalized, printable certificate for your child in seconds — for preschool graduation, learning milestones, and more.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Is this certificate maker really free?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can create and download a personalized certificate for free. A small watermark appears on the free version."}},
+    {"@type":"Question","name":"Can I print the certificate at home?","acceptedAnswer":{"@type":"Answer","text":"Yes, use the Print button to print directly, or download it as an image to print later or share online."}},
+    {"@type":"Question","name":"What occasions can I make a certificate for?","acceptedAnswer":{"@type":"Answer","text":"Preschool graduation, learning the alphabet, potty training, good behavior, reading milestones, and any achievement worth celebrating."}}
+  ]
+}
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  body { font-family: 'Georgia', serif; background:#fdf9f0; color:#2d2d2d; }
+  .cert-font { font-family: 'Georgia', serif; }
+  @media print {
+    body * { visibility: hidden; }
+    #certificateCard, #certificateCard * { visibility: visible; }
+    #certificateCard { position: fixed; top: 0; left: 0; width: 100%; }
+  }
+</style>
+</head>
+<body class="antialiased">
+
+<header class="max-w-6xl mx-auto px-6 py-6 flex justify-between items-center border-b border-amber-100">
+  <div class="text-xl font-bold text-amber-700 flex items-center gap-2">🏆 <span>KidCertificates</span></div>
+  <nav class="hidden md:flex gap-6 text-sm font-medium text-gray-600">
+    <a href="/worksheets.html" class="hover:text-amber-700">Worksheets</a>
+    <a href="/blog.html" class="hover:text-amber-700">Blog</a>
+    <a href="/about.html" class="hover:text-amber-700">About</a>
+    <a href="/contact.html" class="hover:text-amber-700">Contact</a>
+  </nav>
+  <a href="#builder" class="bg-amber-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold shadow hover:bg-amber-700 transition">Create Free Certificate</a>
+</header>
+
+<!-- Hero -->
+<section class="max-w-4xl mx-auto px-6 py-14 text-center">
+  <span class="bg-amber-100 text-amber-800 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wide">Free & Instant</span>
+  <h1 class="text-3xl md:text-5xl font-extrabold mt-6 leading-tight">Celebrate Every Milestone With a Personalized Certificate</h1>
+  <p class="text-lg text-gray-600 mt-5 max-w-2xl mx-auto">From preschool graduation to learning the alphabet — make a beautiful, printable certificate with your child's name in under a minute.</p>
+</section>
+
+<!-- Builder -->
+<section id="builder" class="max-w-5xl mx-auto px-6 py-10 grid grid-cols-1 lg:grid-cols-2 gap-10">
+  <!-- Form -->
+  <div class="bg-white rounded-2xl shadow-sm border border-amber-100 p-6">
+    <h2 class="text-xl font-bold mb-5">Fill in the details</h2>
+    <div class="space-y-4">
+      <div>
+        <label class="block text-sm font-semibold mb-1">Child's Name</label>
+        <input id="childName" type="text" placeholder="e.g. Ayesha Khan" class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:border-amber-500" oninput="updatePreview()">
+      </div>
+      <div>
+        <label class="block text-sm font-semibold mb-1">Achievement</label>
+        <select id="achievement" class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:border-amber-500" onchange="handleAchievementChange()">
+          <option value="Successfully Completed Preschool">Preschool Graduation</option>
+          <option value="Learned the Alphabet A-Z">Learned the Alphabet</option>
+          <option value="Mastered Counting 1-100">Mastered Counting</option>
+          <option value="Best Behavior Award">Good Behavior Award</option>
+          <option value="Reading Star of the Month">Reading Star</option>
+          <option value="Potty Training Champion">Potty Training Champion</option>
+          <option value="__custom">Custom Achievement...</option>
+        </select>
+        <input id="customAchievement" type="text" placeholder="Type your own achievement text" class="hidden mt-2 w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:border-amber-500" oninput="updatePreview()">
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-semibold mb-1">Date</label>
+          <input id="certDate" type="date" class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:border-amber-500" oninput="updatePreview()">
+        </div>
+        <div>
+          <label class="block text-sm font-semibold mb-1">Theme</label>
+          <select id="theme" class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:border-amber-500" onchange="updatePreview()">
+            <option value="gold">Gold & Cream</option>
+            <option value="pastel">Pastel Rainbow</option>
+            <option value="stars">Blue & Stars</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <label class="block text-sm font-semibold mb-1">Presented By (parent / teacher / school name)</label>
+        <input id="presentedBy" type="text" placeholder="e.g. Little Stars Preschool" class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:border-amber-500" oninput="updatePreview()">
+      </div>
+    </div>
+
+    <div class="flex gap-3 mt-6 flex-wrap">
+      <button onclick="downloadCert()" class="bg-amber-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-amber-700 transition">⬇ Download as Image</button>
+      <button onclick="window.print()" class="bg-white border border-amber-300 text-amber-700 px-6 py-3 rounded-full font-semibold hover:bg-amber-50 transition">🖨 Print</button>
+    </div>
+    <p class="text-xs text-gray-400 mt-3">Free download includes a small watermark. See Premium below to remove it.</p>
+  </div>
+
+  <!-- Live preview -->
+  <div class="flex items-center justify-center">
+    <div id="certificateCard" class="w-full aspect-[4/3] rounded-lg shadow-xl p-8 flex flex-col items-center justify-center text-center border-8 relative overflow-hidden" style="background:#fffaf0; border-color:#d4af37;">
+      <div id="certTheme" class="absolute inset-3 border-2 rounded" style="border-color:#d4af37;"></div>
+      <p class="relative text-xs tracking-[0.3em] uppercase text-amber-700 font-semibold">Certificate of Achievement</p>
+      <p id="previewAchievement" class="relative text-sm mt-3 text-gray-600">is proudly presented to</p>
+      <h2 id="previewName" class="relative text-3xl md:text-4xl font-bold mt-2 mb-3 cert-font text-gray-800">Child's Name</h2>
+      <p id="previewAchievementText" class="relative text-sm text-gray-600 max-w-sm">for successfully completing preschool</p>
+      <div class="relative flex justify-between w-full mt-8 px-6 text-xs text-gray-500">
+        <span id="previewDate">Date</span>
+        <span id="previewBy">Presented by</span>
+      </div>
+      <p class="relative text-[10px] text-gray-300 mt-4" id="watermark">Made with KidCertificates.com</p>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing / earning -->
+<section class="max-w-4xl mx-auto px-6 py-16">
+  <h2 class="text-2xl font-bold text-center mb-8">Free vs Premium</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+      <h3 class="font-bold text-lg mb-2">Free</h3>
+      <p class="text-sm text-gray-600 mb-4">Unlimited certificates, all themes, includes a small watermark.</p>
+      <p class="text-2xl font-bold">$0</p>
+    </div>
+    <div class="bg-amber-50 p-6 rounded-2xl border-2 border-amber-300 shadow-sm relative">
+      <span class="absolute -top-3 left-6 bg-amber-600 text-white text-xs px-3 py-1 rounded-full">Most Popular</span>
+      <h3 class="font-bold text-lg mb-2">Premium (one-time)</h3>
+      <p class="text-sm text-gray-600 mb-4">No watermark, high-resolution download, extra themes and borders.</p>
+      <p class="text-2xl font-bold mb-4">$1.99</p>
+      <button id="premiumBtn" onclick="unlockPremium()" class="w-full bg-amber-600 text-white py-2.5 rounded-full font-semibold hover:bg-amber-700 transition">Unlock Premium</button>
+    </div>
+  </div>
+</section>
+
+<!-- Ad slot placeholder -->
+<section class="max-w-4xl mx-auto px-6 py-6 text-center">
+  <div class="border border-dashed border-gray-300 rounded-lg py-8 text-gray-400 text-sm">Ad space (connect Google AdSense here once approved)</div>
+</section>
+
+<!-- SEO content -->
+<section class="max-w-4xl mx-auto px-6 py-16">
+  <h2 class="text-2xl font-bold mb-6">Why Certificates Matter for Early Learning</h2>
+  <p class="text-gray-700 leading-relaxed mb-4">Recognizing small wins helps young children build confidence and stay motivated. A printed certificate turns an everyday milestone — like finishing the alphabet or completing preschool — into something they can hold, display, and feel proud of.</p>
+  <p class="text-gray-700 leading-relaxed">Teachers and parents alike use certificates to mark potty training success, reading progress, good behavior, and graduation days. Keep one on the fridge, mail it to grandparents, or add it to a keepsake box.</p>
+
+  <h2 class="text-2xl font-bold mt-10 mb-6">Frequently Asked Questions</h2>
+  <div class="space-y-4">
+    <details class="p-4 bg-white rounded-xl border border-gray-100"><summary class="font-semibold cursor-pointer">Is this certificate maker really free?</summary><p class="text-sm text-gray-600 mt-2">Yes. You can create and download a personalized certificate for free, with a small watermark.</p></details>
+    <details class="p-4 bg-white rounded-xl border border-gray-100"><summary class="font-semibold cursor-pointer">Can I print the certificate at home?</summary><p class="text-sm text-gray-600 mt-2">Yes — use the Print button, or download it as an image to print or share later.</p></details>
+    <details class="p-4 bg-white rounded-xl border border-gray-100"><summary class="font-semibold cursor-pointer">What occasions can I make a certificate for?</summary><p class="text-sm text-gray-600 mt-2">Preschool graduation, the alphabet, counting, good behavior, reading milestones, potty training, and more.</p></details>
+  </div>
+</section>
+
+<footer class="max-w-6xl mx-auto px-6 py-10 border-t border-gray-200 text-center text-sm text-gray-500">
+  <div class="flex justify-center gap-6 mb-4 flex-wrap">
+    <a href="/worksheets.html" class="hover:text-amber-700">Worksheets</a>
+    <a href="/blog.html" class="hover:text-amber-700">Blog</a>
+    <a href="/about.html" class="hover:text-amber-700">About</a>
+    <a href="/privacy.html" class="hover:text-amber-700">Privacy Policy</a>
+    <a href="/terms.html" class="hover:text-amber-700">Terms of Service</a>
+    <a href="/contact.html" class="hover:text-amber-700">Contact</a>
+  </div>
+  © 2026 KidCertificates. All rights reserved.
+</footer>
+
+<script>
+const achievementTextMap = {
+  "Successfully Completed Preschool": "for successfully completing preschool",
+  "Learned the Alphabet A-Z": "for learning the alphabet from A to Z",
+  "Mastered Counting 1-100": "for mastering counting from 1 to 100",
+  "Best Behavior Award": "for showing wonderful behavior every day",
+  "Reading Star of the Month": "for being a reading star this month",
+  "Potty Training Champion": "for becoming a potty training champion"
+};
+
+let isPremium = false;
+const PREMIUM_CODE = "CHANGE-THIS-CODE";
+const PAYMENT_LINK = "https://your-payment-link.example.com";
+
+function handleAchievementChange() {
+  const sel = document.getElementById('achievement');
+  document.getElementById('customAchievement').classList.toggle('hidden', sel.value !== '__custom');
+  updatePreview();
+}
+
+function updatePreview() {
+  const name = document.getElementById('childName').value.trim() || "Child's Name";
+  const sel = document.getElementById('achievement');
+  const custom = document.getElementById('customAchievement').value.trim();
+  const achievementText = sel.value === '__custom' && custom
+    ? custom
+    : (achievementTextMap[sel.value] || sel.value);
+  const date = document.getElementById('certDate').value || 'Date';
+  const by = document.getElementById('presentedBy').value.trim() || 'Presented by';
+  const theme = document.getElementById('theme').value;
+
+  document.getElementById('previewName').textContent = name;
+  document.getElementById('previewAchievementText').textContent = achievementText;
+  document.getElementById('previewDate').textContent = date;
+  document.getElementById('previewBy').textContent = by;
+
+  const card = document.getElementById('certificateCard');
+  const border = document.getElementById('certTheme');
+  const themes = {
+    gold:   { bg: '#fffaf0', border: '#d4af37' },
+    pastel: { bg: '#fef6fb', border: '#f472b6' },
+    stars:  { bg: '#f0f7ff', border: '#3b82f6' }
+  };
+  const t = themes[theme] || themes.gold;
+  card.style.background = t.bg;
+  card.style.borderColor = t.border;
+  border.style.borderColor = t.border;
+}
+
+function unlockPremium() {
+  const code = prompt("Already purchased? Enter your unlock code (or click Cancel to buy first).");
+  if (code === null) {
+    window.open(PAYMENT_LINK, '_blank');
+    return;
+  }
+  if (code.trim() === PREMIUM_CODE) {
+    isPremium = true;
+    document.getElementById('watermark').classList.add('hidden');
+    document.getElementById('premiumBtn').textContent = '✓ Premium Unlocked';
+    alert('Premium unlocked! Your downloads are now watermark-free.');
+  } else {
+    alert('That code didn\'t match. Please check your purchase email, or buy Premium first.');
+    window.open(PAYMENT_LINK, '_blank');
+  }
+}
+
+function downloadCert() {
+  html2canvas(document.getElementById('certificateCard'), { scale: isPremium ? 3 : 2 }).then(canvas => {
+    const link = document.createElement('a');
+    link.download = 'certificate.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  });
+}
+
+updatePreview();
+</script>
+</body>
+  </html>
