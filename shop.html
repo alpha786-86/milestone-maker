@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop | KidCertificates — Printable Worksheet Packs & Preschool Books</title>
+<meta name="description" content="Browse ready-made printable worksheet packs and preschool activity books for kids. Instant free samples and affordable bundles.">
+<link rel="canonical" href="https://kidscertificates.example.com/shop.html">
+<meta name="robots" content="index, follow">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>body{font-family:'Georgia',serif;background:#fdf9f0;color:#2d2d2d;}</style>
+</head>
+<body>
+<header class="max-w-6xl mx-auto px-6 py-6 flex justify-between items-center border-b border-amber-100">
+  <a href="/index.html" class="text-xl font-bold text-amber-700 flex items-center gap-2">🏆 <span>KidCertificates</span></a>
+  <nav class="hidden md:flex gap-6 text-sm font-medium text-gray-600">
+    <a href="/shop.html" class="text-amber-700 font-semibold">Shop</a>
+    <a href="/worksheets.html" class="hover:text-amber-700">Worksheets</a>
+    <a href="/blog.html" class="hover:text-amber-700">Blog</a>
+    <a href="/about.html" class="hover:text-amber-700">About</a>
+    <a href="/contact.html" class="hover:text-amber-700">Contact</a>
+  </nav>
+  <a href="/index.html#builder" class="bg-amber-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold shadow hover:bg-amber-700 transition">Create Free Certificate</a>
+</header>
+
+<section class="max-w-4xl mx-auto px-6 py-14 text-center">
+  <h1 class="text-3xl md:text-4xl font-extrabold mb-4">Printable Worksheet Packs & Preschool Books</h1>
+  <p class="text-gray-600 max-w-2xl mx-auto">Ready-made, professionally designed packs — download the free sample instantly, or order a bundle via WhatsApp.</p>
+</section>
+
+<section class="max-w-5xl mx-auto px-6 pb-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+
+  <div class="bg-white rounded-2xl border border-amber-100 p-6 flex flex-col">
+    <span class="text-xs font-bold text-green-700 uppercase tracking-wide mb-2">Free Sample</span>
+    <h3 class="font-bold text-lg mb-2">Alphabet Tracing Pack</h3>
+    <p class="text-sm text-gray-600 flex-1 mb-4">26 tracing pages, A to Z, print-ready.</p>
+    <p class="text-xl font-bold mb-4">Free</p>
+    <a href="/alphabet-pack.pdf" download class="bg-amber-600 text-white text-center py-2.5 rounded-full font-semibold hover:bg-amber-700 transition">Download PDF</a>
+  </div>
+
+  <div class="bg-white rounded-2xl border border-amber-100 p-6 flex flex-col">
+    <span class="text-xs font-bold text-amber-700 uppercase tracking-wide mb-2">Single Topic</span>
+    <h3 class="font-bold text-lg mb-2">Numbers & Counting Pack</h3>
+    <p class="text-sm text-gray-600 flex-1 mb-4">15-20 pages focused on one topic — numbers, shapes, or coloring.</p>
+    <p class="text-xl font-bold mb-4">$2.99</p>
+    <button onclick="orderViaWhatsApp('Numbers & Counting Pack', '$2.99')" class="bg-amber-600 text-white py-2.5 rounded-full font-semibold hover:bg-amber-700 transition">Order via WhatsApp</button>
+  </div>
+
+  <div class="bg-amber-50 rounded-2xl border-2 border-amber-300 p-6 flex flex-col relative">
+    <span class="absolute -top-3 left-6 bg-amber-600 text-white text-xs px-3 py-1 rounded-full">Best Value</span>
+    <span class="text-xs font-bold text-amber-700 uppercase tracking-wide mb-2">Complete Bundle</span>
+    <h3 class="font-bold text-lg mb-2">Complete Preschool Bundle</h3>
+    <p class="text-sm text-gray-600 flex-1 mb-4">50+ pages: alphabet, numbers, shapes, coloring, and more.</p>
+    <p class="text-xl font-bold mb-4">$4.99</p>
+    <button onclick="orderViaWhatsApp('Complete Preschool Bundle', '$4.99')" class="bg-amber-600 text-white py-2.5 rounded-full font-semibold hover:bg-amber-700 transition">Order via WhatsApp</button>
+  </div>
+
+</section>
+
+<section class="max-w-4xl mx-auto px-6 pb-16">
+  <div class="bg-white rounded-2xl border border-amber-100 p-6 text-center">
+    <h2 class="font-bold text-lg mb-2">How ordering works</h2>
+    <p class="text-sm text-gray-600">Tap "Order via WhatsApp" — it opens a chat with the product and price already filled in. We'll confirm payment (JazzCash, Easypaisa, or bank transfer) and send your PDF directly on WhatsApp.</p>
+  </div>
+</section>
+
+<footer class="max-w-6xl mx-auto px-6 py-10 border-t border-gray-200 text-center text-sm text-gray-500">
+  <div class="flex justify-center gap-6 mb-4 flex-wrap">
+    <a href="/shop.html" class="hover:text-amber-700">Shop</a>
+    <a href="/worksheets.html" class="hover:text-amber-700">Worksheets</a>
+    <a href="/blog.html" class="hover:text-amber-700">Blog</a>
+    <a href="/about.html" class="hover:text-amber-700">About</a>
+    <a href="/privacy.html" class="hover:text-amber-700">Privacy Policy</a>
+    <a href="/terms.html" class="hover:text-amber-700">Terms of Service</a>
+    <a href="/contact.html" class="hover:text-amber-700">Contact</a>
+  </div>
+  © 2026 KidCertificates. All rights reserved.
+</footer>
+
+<script>
+const WHATSAPP_NUMBER = "923257234453";
+function orderViaWhatsApp(productName, price) {
+  const msg = encodeURIComponent(`Hi! I'd like to order "${productName}" (${price}). Please share payment details.`);
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
+}
+</script>
+</body>
+</html>
